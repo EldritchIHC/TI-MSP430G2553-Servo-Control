@@ -21,7 +21,6 @@ int main(void)
     GPIO_vPinMaskGenerator(u8PinList2, 1, &u8PinMask2);
     GPIO_vPinMaskGenerator(u8PinList3, 1, &u8PinMask3);
     PWM_vPWM0ConfigSingle(3000, 150, DIV8, 2, PORT1, MODE_UP, ENABLE);
-    //PWM_vPWM1ConfigComplementary(160, 80, 10, DIV1, 1, PORT2, 4, PORT2, DISABLE);
     GPIO_vPort1OutputConfig(u8PinMask1);//Green LED
     GPIO_vPort1OutputConfig(u8PinMask2);//Red LED
     GPIO_vPort1InputConfig(u8PinMask3, ENABLE, PULLUP, ENABLE, HIGH_TO_LOW);
@@ -75,11 +74,4 @@ __interrupt void ISR_TimerA0()
     GPIO_vPort1OutputPortToggle(u8PinMask1);
 
 }
-/*
-#pragma vector=TIMER1_A1_VECTOR
-__interrupt void ISR_TimerA1()
-{
-    TA1CTL &= 0xFFFE;
-    GPIO_vPort1OutputPortToggle(u8PinMask2);
-}
-*/
+
